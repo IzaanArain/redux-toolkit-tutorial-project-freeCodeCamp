@@ -17,18 +17,13 @@ const cartSlice=createSlice({
         },
         removeItem:(state,action)=>{
             const itemId=action.payload;
-            // const itemId='recB6qcHPxb62YJ75';
             // console.log(`payload : ${itemId}`)
             // for(let i=0;i<state.amount;i++){
             //     console.log(`state CartItems: ${state.cartItems[i].id}`)
             // }
             // console.log(`state ID: ${state.cartItems[0].id}`)
             state.cartItems=state.cartItems.filter((item)=>item.id!==itemId)
-            // for(let i=0;i<state.amount;i++){
-            //     console.log(`state CartItems: ${state.cartItems[i].id}`)
-            // }
                 // state.cartItems.splice(state.cartItems.findIndex((arrow) => arrow.id === itemId), 1);
-            // console.log(`state Id: ${cartItem.id}`)//find function
 
             //Explaination for line 26 'state.cartItems=state.cartItems.filter((item)=>item.id!==itemId)'
             //the removeItem reducer function of the Redux slice that manages a shopping cart. It updates the cartItems property of the state by removing a cart item from the array that has a specific ID.
