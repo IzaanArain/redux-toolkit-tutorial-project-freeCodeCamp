@@ -31,6 +31,7 @@ const cartSlice=createSlice({
             // console.log(`state Id: ${cartItem.id}`)//find function
 
             //Explaination for line 26 'state.cartItems=state.cartItems.filter((item)=>item.id!==itemId)'
+            //the removeItem reducer function of the Redux slice that manages a shopping cart. It updates the cartItems property of the state by removing a cart item from the array that has a specific ID.
             //state.cartItems is the cartItems property of the current state.
             //filter is a method of arrays in JavaScript that creates a new array containing all elements that pass a test. In this case, the test is that the id property of each element in the array is not equal to itemId.
             //The filter method returns a new array that contains all cart items except the one with the specified ID.
