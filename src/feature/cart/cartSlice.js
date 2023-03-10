@@ -1,30 +1,31 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import cartItems from '../../cartItems';
+// import cartItems from '../../cartItems';
 
 const url='https://course-api.com/react-useReducer-cart-project'
 
 const initialState={
     cartItems:[],
-    amount:4,
+    amount:0,
     total:0,
     isLoading:true,
 }
 
 export const getCartItems=createAsyncThunk(
-    'cart/getCartItems',()=>{
-        return fetch(url)
-        .then(res=>res.json())
-        .catch((err)=>console.log(err));
-        
-        // async ()=>{
-        //     try {
-        //         const res = await fetch(url);
-        //         return await res.json();
-        //     } catch (err) {
-        //         return console.log(err);
-        //     }
-        // }
-})
+    'cart/getCartItems',
+    // ()=>{
+    //     return fetch(url)
+    //     .then(res=>res.json())
+    //     .catch((err)=>console.log(err));
+    // }
+    async ()=>{
+            try {
+                const res = await fetch(url);
+                return await res.json();//this will be stored in action.paylaod of the fulfilled lifecycle function in the extra reducers
+            } catch (err) {
+                return console.log(err);
+            }
+        }
+        )
 const cartSlice=createSlice({
     name:'cart',
     initialState,
@@ -77,8 +78,9 @@ const cartSlice=createSlice({
             state.isLoading=true;
         },
         [getCartItems.fulfilled]:(state,action)=>{
+            console.log(action)
             state.isLoading=false;
-            state.cartItems=action.payload;
+            state.cartItems=action.payload; //res.json() or data in a array of javascript object notation is located here 
         },
         [getCartItems.rejected]:(state,action)=>{
             state.isLoading=false;

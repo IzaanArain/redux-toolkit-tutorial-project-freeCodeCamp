@@ -13,9 +13,9 @@ function App() {
 
   useEffect(()=>{
     dispatch(calculateTotals());
-  },[cartItems]);
+  },[cartItems]); //we will invoke this every time there is a change in cartItems or update something in carItems
 
-  useEffect(()=>{
+  useEffect(()=>{ // invoke the getCartItems function once the application loads
     dispatch(getCartItems())
   },[])
 
